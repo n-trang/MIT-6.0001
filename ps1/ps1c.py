@@ -15,4 +15,4 @@ high = 1.00
 salary_to_save = (high + low) / 2
 number_of_guesses = 0
 
-while 
+ 
