@@ -1,11 +1,11 @@
 current_saving = 0
 r = 0.04
-payment = 1000000 * 0.25
+payment = 25000
 semi_annualy_raise = 0.07
 Saving_time = 36
 
 #user input
-starting_salary = float(input("Enter starting salary "))
+salary = float(input("Enter starting salary "))
 
 # this ps use bisection search
 # https://youtu.be/BuwjGi8J5iA
@@ -15,4 +15,6 @@ high = 1.00
 salary_to_save = (high + low) / 2
 number_of_guesses = 0
 
- 
+#in 36 months, each 6 months recive a raise, and interest each month.
+
+
