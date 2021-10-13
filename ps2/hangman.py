@@ -11,6 +11,7 @@
 # (so be sure to read the docstrings!)
 import random
 import string
+from typing_extensions import TypeVarTuple
 
 WORDLIST_FILENAME = "words.txt"
 
@@ -52,25 +53,15 @@ wordlist = load_words()
 
 
 def is_word_guessed(secret_word, letters_guessed):
-    '''
-    secret_word: string, the word the user is guessing; assumes all letters are
-      lowercase
-    letters_guessed: list (of letters), which letters have been guessed so far;
-      assumes that all letters are lowercase
-    returns: boolean, True if all the letters of secret_word are in letters_guessed;
-      False otherwise
-    '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    for i in secret_word:
-        for t in letters_guessed:
-            if i == t:
-                is_guessed = True
-            else:
-                is_guessed = False
-        #         break
-        # break
-# Cần hai cái `break` vì một khỉ đã false là false hẳn, k cần loop tiếp nhỡ đâu cái đằng sau lại true.
+    for char in secret_word:
+        if char not in letters_guessed:
+           is_guessed = False
+        else:
+            is_guessed = True
     print("Letter is guesed:", is_guessed)
+    return is_guessed
+# 3.3.2. The in operator¶
+# The in operator returns whether a given element is contained in a list or tuple:
 is_word_guessed('ffffffe', ['a', 'p', 'l', 'e'])
 
 
@@ -84,30 +75,16 @@ def get_guessed_word(secret_word, letters_guessed):
       which letters in secret_word have been guessed so far.
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    now_guessed_word_list = []
-    for i in secret_word:
-        print('for i', i)
-        for t in letters_guessed:
-            print ('for t', t)
-            if i == t:
-                now_guessed_word_list.append(i)
-                print('if')
-                
-
-            else:
-                now_guessed_word_list.append("_ ")
-                print('else')
-                
-                
-    print(now_guessed_word_list)
-    now_guessed_word = ""
-    for ele in now_guessed_word_list:
-        now_guessed_word += ele
+    now_guessed_word = ''
+    for char in secret_word:
+        if char not in letters_guessed:
+            now_guessed_word += '_ '
+        else:
+            now_guessed_word += char           
     print(now_guessed_word)
+    return(now_guessed_word)
 
-get_guessed_word("apple", ["a", "p"])
-
-
+get_guessed_word('apple', ['a', 'p'])
 
 
 def get_available_letters(letters_guessed):
