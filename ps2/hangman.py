@@ -61,7 +61,18 @@ def is_word_guessed(secret_word, letters_guessed):
       False otherwise
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    for i in secret_word:
+        for t in letters_guessed:
+            if i == t:
+                is_guessed = True
+            else:
+                is_guessed = False
+        #         break
+        # break
+# Cần hai cái `break` vì một khỉ đã false là false hẳn, k cần loop tiếp nhỡ đâu cái đằng sau lại true.
+    print("Letter is guesed:", is_guessed)
+is_word_guessed('ffffffe', ['a', 'p', 'l', 'e'])
+
 
 
 
@@ -73,7 +84,29 @@ def get_guessed_word(secret_word, letters_guessed):
       which letters in secret_word have been guessed so far.
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    now_guessed_word_list = []
+    for i in secret_word:
+        print('for i', i)
+        for t in letters_guessed:
+            print ('for t', t)
+            if i == t:
+                now_guessed_word_list.append(i)
+                print('if')
+                
+
+            else:
+                now_guessed_word_list.append("_ ")
+                print('else')
+                
+                
+    print(now_guessed_word_list)
+    now_guessed_word = ""
+    for ele in now_guessed_word_list:
+        now_guessed_word += ele
+    print(now_guessed_word)
+
+get_guessed_word("apple", ["a", "p"])
+
 
 
 
