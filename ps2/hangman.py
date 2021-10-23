@@ -51,90 +51,88 @@ def choose_word(wordlist):
 wordlist = load_words()
 
 
-# def is_word_guessed(secret_word, letters_guessed):
-#     for char in secret_word:
-#         if char in letters_guessed:
-#             is_guessed = True
-#         else:
-#             is_guessed = False
-#             break
-#     return is_guessed
-# # 3.3.2. The in operator
-# # The `in` operator returns whether a given element is contained in a list or tuple.
-# # `in` works somewhat differently with strings. It evaluates to True if one string is a substring of another string.
+def is_word_guessed(secret_word, letters_guessed):
+    for char in secret_word:
+        if char in letters_guessed:
+            is_guessed = True
+        else:
+            is_guessed = False
+            break
+    return is_guessed
+# 3.3.2. The in operator
+# The `in` operator returns whether a given element is contained in a list or tuple.
+# `in` works somewhat differently with strings. It evaluates to True if one string is a substring of another string.
 
 
-# # is_word_guessed('ffffffe', ['a', 'p', 'l', 'e'])
+def get_guessed_word(secret_word, letters_guessed):
+    now_guessed_word = ''
+    for char in secret_word:
+        if char in letters_guessed:
+            now_guessed_word += char
+        else:
+            now_guessed_word += "_ "           
+    return(now_guessed_word)
 
-# def get_guessed_word(secret_word, letters_guessed):
-#     now_guessed_word = ''
-#     for char in secret_word:
-#         if char in letters_guessed:
-#             now_guessed_word += char
-#         else:
-#             now_guessed_word += "_ "           
-#     return(now_guessed_word)
-
-# # get_guessed_word('apple', ['a', 'p'])
+# get_guessed_word('apple', ['a', 'p'])
 
 
-# def get_available_letters(letters_guessed):
-#     available_letter = ""
-#     for char in string.ascii_lowercase:
-#         if char not in letters_guessed:
-#             available_letter += char
-#     return(available_letter)
+def get_available_letters(letters_guessed):
+    available_letter = ""
+    for char in string.ascii_lowercase:
+        if char not in letters_guessed:
+            available_letter += char
+    return(available_letter)
 
-# # get_available_letters(['a', 'b'])
+# get_available_letters(['a', 'b'])
 
 
-# def hangman(secret_word):
-#     print("Welcome to the game Hangman. I'm thinking of a word that has", len(secret_word), "letters.")
-#     guesses_left = 6
-#     warnings_left = 3
-#     valid_input = string.ascii_lowercase + string.ascii_uppercase
-#     vowels = ['a', 'i', 'o', 'u', 'e', 'A', 'I', 'O', 'U', 'E']
-#     guessed_letters_list = []
+def hangman(secret_word):
+    print("Welcome to the game Hangman. I'm thinking of a word that has", len(secret_word), "letters.")
+    guesses_left = 6
+    warnings_left = 3
+    valid_input = string.ascii_lowercase + string.ascii_uppercase
+    vowels = ['a', 'i', 'o', 'u', 'e', 'A', 'I', 'O', 'U', 'E']
+    guessed_letters_list = []
     
-#     while guesses_left >= 1:
-#             print('you have', guesses_left, 'guesses left.')
-#             print('you have', warnings_left, "warning left.")
-#             print('available letter:', get_available_letters(guessed_letters_list))
-#             letter_guessed = input ("Please guess a letter: ")
-# # If the input is invalid            
-#             if letter_guessed not in valid_input:
-#                 if warnings_left >= 1:
-#                     warnings_left = warnings_left - 1
-#                     print(warnings_left)
+    while guesses_left >= 1:
+            print('you have', guesses_left, 'guesses left.')
+            print('you have', warnings_left, "warning left.")
+            print('available letter:', get_available_letters(guessed_letters_list))
+            letter_guessed = input ("Please guess a letter: ")
+# If the input is invalid            
+            if letter_guessed not in valid_input:
+                if warnings_left >= 1:
+                    warnings_left = warnings_left - 1
+                    print(warnings_left)
 
-#                 else:
-#                     if guesses_left >= 1:
-#                         guesses_left = guesses_left - 1
-#                     else:
-#                         print('sorry you ran out of guess, you lost rồi my dude.')
-# # If the input is valid
-#             else:
-# # if the guessed letter is right
-#                 if letter_guessed in secret_word:
-#                     guessed_letters_list.append(letter_guessed)
-#                     print('congrats. you guessed right.', get_guessed_word(secret_word, guessed_letters_list))
-#                     if is_word_guessed == True:
-#                         print("congrats! you won!")
-# # If the guessed letter is wrong
-#                 else:
-#                     guessed_letters_list.append(letter_guessed)
-#                     if letter_guessed in vowels:
-#                         guesses_left -= 2
-#                         if guesses_left <= 0:
-#                             print("you lost r my dude")
-#                         else:
-#                             pass
-#                     else:
-#                         guesses_left -= 1
-#                         if guesses_left <= 0:
-#                             print("you lost r my dude")
-#                         else:
-#                             pass
+                else:
+                    if guesses_left >= 1:
+                        guesses_left = guesses_left - 1
+                    else:
+                        print('sorry you ran out of guess, you lost rồi my dude.')
+# If the input is valid
+            else:
+# if the guessed letter is right
+                if letter_guessed in secret_word:
+                    guessed_letters_list.append(letter_guessed)
+                    print('congrats. you guessed right.', get_guessed_word(secret_word, guessed_letters_list))
+                    if is_word_guessed == True:
+                        print("congrats! you won!")
+# If the guessed letter is wrong
+                else:
+                    guessed_letters_list.append(letter_guessed)
+                    if letter_guessed in vowels:
+                        guesses_left -= 2
+                        if guesses_left <= 0:
+                            print("you lost r my dude")
+                        else:
+                            print('sorry wrong guess')
+                    else:
+                        guesses_left -= 1
+                        if guesses_left <= 0:
+                            print("you lost r my dude")
+                        else:
+                            print('sorry wrong guess')
 
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
@@ -147,11 +145,16 @@ wordlist = load_words()
 
 
 def match_with_gaps(my_word, other_word):
-    my_word_no_gap = my_word.strip('')
-    if len(my_word_no_gap) != len(other_word):
+    my_word_no_spaces = []
+    for char in my_word:
+        if char != ' ':
+            my_word_no_spaces.append(char)
+        else:
+            pass
+    if len(my_word_no_spaces) != len(other_word):
         is_match = False
     else:
-        for char, index in enumerate(my_word_no_gap):
+        for index, char in enumerate(my_word_no_spaces):
             if char == "_":
                 pass
             else:
@@ -160,27 +163,17 @@ def match_with_gaps(my_word, other_word):
                     break
                 else:
                     is_match = True
-    print(is_match)
     return(is_match)
-
-match_with_gaps('te_ t', "tact")
-
-
 
 
 def show_possible_matches(my_word):
-    '''
-    my_word: string with _ characters, current guess of secret word
-    returns: nothing, but should print out every word in wordlist that matches my_word
-             Keep in mind that in hangman when a letter is guessed, all the positions
-             at which that letter occurs in the secret word are revealed.
-             Therefore, the hidden letter(_ ) cannot be one of the letters in the word
-             that has already been revealed.
-
-    '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
-
+    my_word_no_spaces = []
+    for char in my_word:
+        if char != ' ':
+            my_word_no_spaces.append(char)
+        else:
+            pass
+    
 
 
 def hangman_with_hints(secret_word):
