@@ -14,11 +14,10 @@ saving_time = 0
 #everything that's gonna be updated need to be put into while loop.
 while current_saving < payment:
     interest = current_saving * r / 12
-    current_saving += monthly_salary_saved + interest
+    current_saving += annual_salary / 12 * portion_saved + interest
     saving_time += 1
     if saving_time%6 == 0:
         annual_salary += annual_salary * semi_annualy_raise
         monthly_salary_saved = annual_salary / 12 * portion_saved
-        print('new salary ', annual_salary)
 
 print(saving_time)

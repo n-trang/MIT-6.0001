@@ -15,6 +15,5 @@ while abs(ans**2 -x) >= epsilon:
     else:
         high = ans
     ans = (high + low) / 2.0
-print('numbers of guesses ', number_of_guess)
+print('numbers of guesses: ', number_of_guess)
 print(ans, 'is close to square of root of', x)
-
