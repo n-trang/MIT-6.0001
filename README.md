@@ -1,4 +1,2 @@
 # MIT-6.0001 INTRODUCTION TO COMPUTER SCIENCE AND PROGRAMMING IN PYTHON
-
-## Author
-[Trang Nguyen](https://trang17.github.io)
+My answers for the coding assignments.
